@@ -1,0 +1,48 @@
+:ClrHome
+:ClrDraw
+:0→X
+:0→Y
+:0→Score
+:
+:While 1
+:   If getKey
+:   Then
+:       Goto InputHandler
+:   End
+:   Goto UpdateGame
+:End
+:
+:Lbl InputHandler
+:If getKey=24  // Left arrow key
+:Then
+:   X-1→X
+:End
+:If getKey=26  // Right arrow key
+:Then
+:   X+1→X
+:End
+:If getKey=25  // Down arrow key
+:Then
+:   Y+1→Y
+:End
+:Return
+:Lbl UpdateGame
+:
+:ClrDraw
+:Pt-On(X,Y)  // Draw the current tetromino
+:If Y=8  // Bottom of the screen
+:Then
+:   0→Y  // Reset Y position
+:   Score+1→Score  // Increase score
+:End
+:DispGraph
+:Pause 100
+:Return
+:
+:If Y=8 and collision detected  // Simplified collision check
+:Then
+:   ClrHome
+:   Output(1,1,"GAME OVER")
+:   Output(2,1,"Score: ",Score
+:   Stop
+:End
